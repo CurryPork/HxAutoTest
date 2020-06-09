@@ -1,11 +1,14 @@
 # 基础配置信息
 import codecs
 import configparser
+
 CONFIG_PATH = "../conf/config.ini"
+CASE_EXCEL = "../data/case_ehr.xlsx"
 
 class ReadConfig:
 
     def __init__(self):
+
         my_config = open(CONFIG_PATH, "r", encoding="utf8")
         data = my_config.read()
         if data[:3] == codecs.BOM_UTF8:
