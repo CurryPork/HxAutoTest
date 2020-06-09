@@ -13,7 +13,7 @@ class Session(object):
         header = {"Content-Type": "application/json"}
         data = {"username": self.username, "password": self.password}
         s = requests.post(self.loginHost, headers=header, json=data)
-        my_token = "Token " + s.json().get("token")
+        my_token ="Token " + s.json().get("token")
         print(my_token)
         return my_token
 
