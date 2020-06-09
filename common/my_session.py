@@ -3,7 +3,7 @@ import requests
 from conf.config import ReadConfig
 
 
-class Session(object):
+class MySession(object):
     def __init__(self):
         self.loginHost = ReadConfig().get_loginfo("LOGIN_INFO", "loginHost")
         self.username = ReadConfig().get_loginfo("LOGIN_INFO", "username")
@@ -19,5 +19,5 @@ class Session(object):
 
 
 if __name__ == '__main__':
-    a = Session()
+    a = MySession()
     a.get_session()

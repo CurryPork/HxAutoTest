@@ -1,5 +1,5 @@
 import unittest
-from common.session import ApiLogin
+from common.my_session import ApiLogin
 from parameterized import parameterized
 from tools.read_json_more import ReadJson
 

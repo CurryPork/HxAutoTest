@@ -1,13 +1,21 @@
 import requests
-
+from common.my_session import MySession
 
 class Requests(object):
     def __init__(self):
-        pass
+        self.authorization = MySession().get_session()
 
     def get_request(self, url):
-        header = {"Content-Type": "application/json"}
-        s = requests.get(url)
-        pass
+        headers = {"authorization":self.authorization,"Content-Type": "application/json"}
+        s = requests.get(url,headers=headers)
+        return s
+
+
 
     pass
+
+if __name__ == '__main__':
+    url = "http://ehrt.g5air.com:8001/api/class/view_org_dept_position"
+    a = Requests()
+    b = a.get_request(url)
+    print(b.text)

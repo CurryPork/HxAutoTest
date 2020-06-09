@@ -1,7 +1,7 @@
 # 测试接口类
 import unittest
 from parameterized import parameterized,param
-from common.session import ApiLogin
+from common.my_session import ApiLogin
 from tools.read_json import ReadJson
 from tools.return_json import ReturnJson
 
