@@ -9,5 +9,4 @@ class Requests(object):
         s = requests.get(url)
         pass
 
-
     pass
