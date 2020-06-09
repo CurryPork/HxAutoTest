@@ -4,10 +4,11 @@ from common.my_session import MySession
 
 class Requests(object):
     def __init__(self):
-        self.authorization = MySession().get_session()
+        # self.authorization = MySession().get_session()
+        pass
 
-    def get_request(self, url):
-        headers = {"authorization":self.authorization,"Content-Type": "application/json"}
+    def get_request(self, url, headers):
+        # headers = {"authorization":self.authorization,"Content-Type": "application/json"}
         s = requests.get(url,headers=headers)
         return s
 

@@ -2,9 +2,12 @@ from common.my_requests import Requests
 import pytest
 import conf.config
 from tools.read_excel import ReadExcel
+from common.my_session import MySession
 from tools.return_json import ReturnJson
+import allure
 # from tools.return_json import ReturnJson
 
+@allure.feature("测试EHR接口")
 class TestEhr(object):
 
     # 参数化 例子
@@ -16,9 +19,18 @@ class TestEhr(object):
     #     a = Requests().get_request(url)
     #     print(a.text)
     #     assert expect_result in a.text
+    @pytest.fixture()
+    def get_session(self):
+        """
+        每次只获取一次session
+        :return: session值
+        """
+        self.authorization = MySession().get_session()
+        return self.authorization
 
+    @allure.story("读取Excel用例")
     @pytest.mark.parametrize("dic", ReadExcel(conf.config.CASE_EXCEL).dict_data())
-    def test_ehr_excel(self, dic):
+    def test_ehr_excel(self, dic, get_session):
         """通过excel读取用例
         :param dic:
         :return:
@@ -33,24 +45,27 @@ class TestEhr(object):
         except_result = dic.get("except_result")
         result = dic.get("result")
         code = dic.get("code")
+        headers = {"authorization": self.authorization, "Content-Type": "application/json"}
+        print("\n获得token:"+get_session)
         if request_type == "get":
-            r = Requests().get_request(request_url)
+            r = Requests().get_request(request_url,headers=headers)
+            assert r.status_code == 200
             assert except_result in r.text
         elif request_type == "post":
             print("hello world")
 
-        print(dic.get("id"))
 
-    # @pytest.mark.parametrize("dic", ReturnJson().return_json())
-    # def test_ehr_json(self, dic):
-    #     """通过json读取用例
-    #     :param dic:
-    #     :return:
-    #     """
-    #     a = Requests().get_request(dic.get("request_url"))
-    #     assert dic.get("except_result") in a.text
-    #     # print('\n测试数据为\n{}'.format(dic.get("except_result")))
+    @pytest.mark.skip
+    @pytest.mark.parametrize("dic", ReturnJson().return_json())
+    def test_ehr_json(self, dic):
+        """通过json读取用例
+        :param dic:
+        :return:
+        """
+        a = Requests().get_request(dic.get("request_url"))
+        assert dic.get("except_result") in a.text
+        # print('\n测试数据为\n{}'.format(dic.get("except_result")))
 
 
 if __name__ == '__main__':
-    pytest.main(["-s","test_ehr.py"])
+    pytest.main(["-s","-n 2","test_ehr.py"])

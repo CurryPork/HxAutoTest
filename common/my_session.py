@@ -14,7 +14,7 @@ class MySession(object):
         data = {"username": self.username, "password": self.password}
         s = requests.post(self.loginHost, headers=header, json=data)
         my_token ="Token " + s.json().get("token")
-        print("\n获得token:{}".format(my_token))
+        # print("\n获得token:{}".format(my_token))
         return my_token
 
 
