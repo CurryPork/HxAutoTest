@@ -6,6 +6,7 @@ class Requests(object):
         pass
 
     def get_request(self, url):
+        header = {"Content-Type": "application/json"}
         s = requests.get(url)
         pass
 
