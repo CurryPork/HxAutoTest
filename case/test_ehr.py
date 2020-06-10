@@ -1,6 +1,6 @@
 from common.my_requests import Requests
 import pytest
-import conf.config
+from conf.config import ReadConfig
 from tools.read_excel import ReadExcel
 from common.my_session import MySession
 from tools.return_json import ReturnJson
@@ -29,7 +29,8 @@ class TestEhr(object):
         return self.authorization
 
     @allure.story("读取Excel用例")
-    @pytest.mark.parametrize("dic", ReadExcel(conf.config.CASE_EXCEL).dict_data())
+    # @allure.title("{title}")
+    @pytest.mark.parametrize("dic", ReadExcel(ReadConfig().CASE_EXCEL).dict_data())
     def test_ehr_excel(self, dic, get_session):
         """通过excel读取用例
         :param dic:
@@ -47,6 +48,7 @@ class TestEhr(object):
         code = dic.get("code")
         headers = {"authorization": self.authorization, "Content-Type": "application/json"}
         print("\n获得token:"+get_session)
+
         if request_type == "get":
             r = Requests().get_request(request_url,headers=headers)
             assert r.status_code == 200
@@ -68,4 +70,5 @@ class TestEhr(object):
 
 
 if __name__ == '__main__':
-    pytest.main(["-s","-n 2","test_ehr.py"])
+    # pytest.main(["-s","-n 2","test_ehr.py"])  # 用2个线程跑接口
+    pytest.main(["-s","test_ehr.py"])

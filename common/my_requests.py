@@ -4,11 +4,14 @@ from common.my_session import MySession
 
 class Requests(object):
     def __init__(self):
+        """
+        默认获取session
+        """
         # self.authorization = MySession().get_session()
         pass
 
     def get_request(self, url, headers):
-        # headers = {"authorization":self.authorization,"Content-Type": "application/json"}
+        # headers = {"authorization":self.authorization,"Content-Type": "application/json"} # 拼接header
         s = requests.get(url,headers=headers)
         return s
 

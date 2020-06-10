@@ -5,9 +5,9 @@ from conf.config import ReadConfig
 
 class MySession(object):
     def __init__(self):
-        self.loginHost = ReadConfig().get_loginfo("LOGIN_INFO", "loginHost")
-        self.username = ReadConfig().get_loginfo("LOGIN_INFO", "username")
-        self.password = ReadConfig().get_loginfo("LOGIN_INFO", "password")
+        self.loginHost = ReadConfig().get_info("LOGIN_INFO", "loginHost")
+        self.username = ReadConfig().get_info("LOGIN_INFO", "username")
+        self.password = ReadConfig().get_info("LOGIN_INFO", "password")
 
     def get_session(self):
         header = {"Content-Type": "application/json"}
