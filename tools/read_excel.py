@@ -1,5 +1,6 @@
 # coding:utf-8
 import xlrd
+from conf.config import ReadConfig
 
 class ReadExcel:
     def __init__(self, case_excel, sheetName="Sheet1"):
@@ -28,12 +29,21 @@ class ReadExcel:
                 r.append(s)
                 j += 1
             return r
-
+    #
+    # def handle_data(self):
+    #     list = ReadExcel(ReadConfig().CASE_EXCEL).dict_data()
+    #     print(list)
+    #     list_case_name = []
+    #     for x in list:
+    #         # print(x.get("case_name"))
+    #         list_case_name.append(x.get("case_name"))
+    #     print(list_case_name)
+    #     return list_case_name
 
 if __name__ == "__main__":
-    case_excel = "../data/case_ehr.xlsx"
-    sheetName = "Sheet1"
-    return_list = ReadExcel(case_excel).dict_data()
-    print(return_list)
-
+    # case_excel = "../data/case_ehr.xlsx"
+    # sheetName = "Sheet1"
+    # return_list = ReadExcel(case_excel).dict_data()
+    # print(return_list)
+    # ReadExcel(ReadConfig().CASE_EXCEL).handle_data()
 

@@ -9,7 +9,6 @@ import allure
 
 @allure.feature("测试EHR接口")
 class TestEhr(object):
-
     # 参数化 例子
     # @pytest.mark.parametrize("url,expected",
     # [("http://ehrt.g5air.com:8001/api/class/view_org_dept_position","董事会秘书"),
@@ -28,6 +27,7 @@ class TestEhr(object):
         self.authorization = MySession().get_session()
         return self.authorization
 
+
     @allure.story("读取Excel用例")
     # @allure.title("{title}")
     @pytest.mark.parametrize("dic", ReadExcel(ReadConfig().CASE_EXCEL).dict_data())
@@ -36,6 +36,7 @@ class TestEhr(object):
         :param dic:
         :return:
         """
+        # print("===="+)
         id = dic.get("id")
         case_name = dic.get("case_name")
         interface_name = dic.get("interface_name")
@@ -71,4 +72,6 @@ class TestEhr(object):
 
 if __name__ == '__main__':
     # pytest.main(["-s","-n 2","test_ehr.py"])  # 用2个线程跑接口
-    pytest.main(["-s","test_ehr.py"])
+    # pytest.main(["-s","test_ehr.py"])
+    # TestEhr().handle_data()
+    print(TestEhr().list_case_name)
