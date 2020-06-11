@@ -29,21 +29,15 @@ class ReadExcel:
                 r.append(s)
                 j += 1
             return r
-    #
-    # def handle_data(self):
-    #     list = ReadExcel(ReadConfig().CASE_EXCEL).dict_data()
-    #     print(list)
-    #     list_case_name = []
-    #     for x in list:
-    #         # print(x.get("case_name"))
-    #         list_case_name.append(x.get("case_name"))
-    #     print(list_case_name)
-    #     return list_case_name
+# 返回题目
+    def dict_item(self, list):
+        item = []
+        for x in list:
+            item.append(x.get("interface_name"))
+        # print(item)
+        return item
 
-if __name__ == "__main__":
-    # case_excel = "../data/case_ehr.xlsx"
-    # sheetName = "Sheet1"
-    # return_list = ReadExcel(case_excel).dict_data()
-    # print(return_list)
-    # ReadExcel(ReadConfig().CASE_EXCEL).handle_data()
-
+if __name__ == '__main__':
+    a = ReadExcel("../data/case_ehr.xlsx")
+    b = a.dict_data()
+    a.dict_item(b)
