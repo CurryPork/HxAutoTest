@@ -17,7 +17,15 @@ class MySession(object):
         # print("\n获得token:{}".format(my_token))
         return my_token
 
+    def get_cookie(self):
+        header = {"Content-Type": "application/json"}
+        data = {"username": self.username, "password": self.password}
+        s = requests.post(self.loginHost, headers=header, json=data)
+        print(s.content)
+        my_cookie = s.json().get("Cookie")
+        # print("\n获得token:{}".format(my_token))
+        return my_cookie
 
 if __name__ == '__main__':
     a = MySession()
-    a.get_session()
+    print(a.get_cookie())

@@ -10,7 +10,6 @@ class ReadConfig:
         self.CONFIG_PATH = self.path_dir+"\conf\config.ini"
         self.CASE_EXCEL = self.path_dir+"\data\case_ehr.xlsx"
         self.html_report_path = self.path_dir+"\report"
-        print(self.CASE_EXCEL)
         my_config = open(self.CONFIG_PATH, "r", encoding="utf8")
         data = my_config.read()
         if data[:3] == codecs.BOM_UTF8:

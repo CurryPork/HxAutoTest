@@ -7,12 +7,20 @@ class Requests(object):
         """
         默认获取session
         """
-        # self.authorization = MySession().get_session()
+        self.authorization = MySession().get_session()
+
         pass
 
-    def get_request(self, url, headers):
-        # headers = {"authorization":self.authorization,"Content-Type": "application/json"} # 拼接header
-        s = requests.get(url,headers=headers)
+    def get_request(self, url):
+        header = {"authorization": self.authorization, "Content-Type": "application/json"}  # 拼接header
+        print(header)
+        s = requests.get(url,headers=header)
+        return s
+
+    def get_request_cookie(self, url, cookies):
+        header = {"authorization": self.authorization, "Content-Type": "application/json"}  # 拼接header
+        print(header)
+        s = requests.get(url,headers=header)
         return s
 
 
