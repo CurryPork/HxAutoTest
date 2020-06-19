@@ -1,12 +1,12 @@
 {
   "login_001": {
-                "request_url": "http://ehrt.g5air.com:8001/api/class/view_org_dept_position",
+                "request_url": "ir.com:8001/api/class/view_org_dept_position",
                 "username": "tanxi",
                 "password": "hx123456.",
                  "code": "",
                  "except_result": "董事会"},
   "login_002": {
-                "request_url": "http://ehrt.g5air.com:8001/api/class/sal_adjust",
+                "request_url": "ir.com:8001/api/class/sal_adjust",
                 "username": "daren",
                 "password": "hx123456",
                  "code": "",

@@ -1,12 +1,12 @@
 {
   "login_001": {
-                "url": "http://ehrt.g5air.com:8001/api/user/login",
+                "url": "http://.com:8001/api/user/login",
                 "username": "tanxi",
                 "password": "hx123456.",
                  "code": "",
                  "expect_result": "tanxi"},
   "login_002": {
-                "url": "http://ehrt.g5air.com:8001/api/user/login",
+                "url": "http://.com:8001/api/user/login",
                 "username": "daren",
                 "password": "hx123456",
                  "code": "",

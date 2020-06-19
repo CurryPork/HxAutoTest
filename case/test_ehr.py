@@ -49,7 +49,11 @@ class TestEhr(object):
             assert r.status_code == 200
             assert except_result in r.text
         elif request_type == "post":
-            print("hello world")
+            r = Requests().post_request(request_url, headers=headers, json_data=request_data)
+            # 增加allure返回值等信息
+            allure_report_get(headers, request_url, r.json())
+            assert r.status_code == 200
+            assert except_result in r.text
 
     @allure.story("读取json用例")
     # @pytest.mark.skip
