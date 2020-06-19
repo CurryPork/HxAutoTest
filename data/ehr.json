@@ -2,13 +2,13 @@
   "login_001": {
                 "request_url": "ir.com:8001/api/class/view_org_dept_position",
                 "username": "tanxi",
-                "password": "hx123456.",
+                "password": "123456.",
                  "code": "",
                  "except_result": "董事会"},
   "login_002": {
                 "request_url": "ir.com:8001/api/class/sal_adjust",
                 "username": "daren",
-                "password": "hx123456",
+                "password": "123456",
                  "code": "",
                  "except_result": "rows"}
 }
